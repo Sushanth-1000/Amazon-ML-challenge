@@ -1,0 +1,23 @@
+# Python 3.12 (3.12.10). Pinned versions of the environments the final run used.
+
+# ---- CPU pipeline: normalize, blocking, LightGBM stage 1 / stage 2, self-training, France and US/India post-processing
+numpy==2.4.6
+pandas==3.0.6
+pyarrow==25.0.1
+scipy==1.18.1
+scikit-learn==1.9.1
+lightgbm==4.7.0
+rapidfuzz==3.14.6
+anyascii==0.3.3
+sparse-dot-topn==1.2.0
+unidecode==1.4.0            # src/v3 only
+
+# ---- GPU steps: bge-m3 dense channel (v61_gpu_embed.py, v61_gpu_cos.py) and bge-reranker-v2-m3 cross-encoders (ce.py)
+torch==2.9.1                # H100 run: 2.9.1+cu129. v4 cross-encoder VM: 2.6.0. v6.2b SageMaker image: pytorch-training 2.9.0
+transformers==5.17.0
+sentence-transformers==6.0.0  # the H100 run did not log this version; 6.0.0 is the team environment's version
+sentencepiece==0.2.2
+
+# Models (downloaded from the Hugging Face hub, run offline afterwards):
+#   BAAI/bge-m3               MIT         ~568M parameters
+#   BAAI/bge-reranker-v2-m3   Apache-2.0  ~568M parameters
